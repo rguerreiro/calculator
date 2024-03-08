@@ -1,17 +1,28 @@
 ﻿namespace Calculator;
 
-public abstract class Operation : ITerm
+public abstract class Operation(string symbol, int priority = 1) : Term(priority)
 {
-    public Operation(ITerm leftOperand, ITerm rightOperand)
+    /**
+     * Methods
+     */
+    public virtual void Set(ITerm leftOperand, ITerm rightOperand)
     {
+        ArgumentNullException.ThrowIfNull(leftOperand);
+        ArgumentNullException.ThrowIfNull(rightOperand);
+
         LeftOperand = leftOperand;
+        LeftOperand.PartOf(this);
+
         RightOperand = rightOperand;
+        RightOperand.PartOf(this);
     }
 
-    public abstract string GetSymbol();
-    public abstract decimal Calc();
+    /**
+     * Properties
+     */
+    public string Symbol { get; private set; } = symbol;
 
-    public ITerm LeftOperand { get; protected set; }
-    public ITerm RightOperand { get; protected set; }
-    public int Priority { get; protected set; } = 0;
+    public ITerm? LeftOperand { get; protected set; } = null;
+
+    public ITerm? RightOperand { get; protected set; } = null;
 }

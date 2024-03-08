@@ -2,19 +2,16 @@
 
 public class MultiplyOperation : Operation
 {
-    public MultiplyOperation(ITerm leftOperand, ITerm rightOperand)
-        : base(leftOperand, rightOperand)
+    public MultiplyOperation()
+        : base("*", priority: 2)
     {
-        Priority = 1;
     }
 
     public override decimal Calc()
     {
-        return LeftOperand.Calc() * RightOperand.Calc();
-    }
+        ArgumentNullException.ThrowIfNull(LeftOperand);
+        ArgumentNullException.ThrowIfNull(RightOperand);
 
-    public override string GetSymbol()
-    {
-        return "x";
+        return LeftOperand.Calc() * RightOperand.Calc();
     }
 }

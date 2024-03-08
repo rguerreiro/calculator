@@ -2,18 +2,16 @@
 
 public class PlusOperation : Operation
 {
-    public PlusOperation(ITerm leftOperand, ITerm rightOperand)
-        : base(leftOperand, rightOperand)
+    public PlusOperation()
+        :base("+")
     {
     }
 
     public override decimal Calc()
     {
-        return LeftOperand.Calc() + RightOperand.Calc();
-    }
+        ArgumentNullException.ThrowIfNull(LeftOperand);
+        ArgumentNullException.ThrowIfNull(RightOperand);
 
-    public override string GetSymbol()
-    {
-        return "+";
+        return LeftOperand.Calc() + RightOperand.Calc();
     }
 }

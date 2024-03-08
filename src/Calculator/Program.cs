@@ -1,9 +1,17 @@
 ﻿using Calculator;
 using Calculator.Operations;
 
-// 10 - (-2) - 4 = 10 + 2 - 4 = 8
-//var operation = new MinusOperation(new Number(10), new MinusOperation(new Number(-2), new Number(4))); // WRONG SEQUENCE, equals to 16
-//var operation = new MinusOperation(new MinusOperation(new Number(10), new Number(-2)), new Number(4));
-var operation = new MinusOperation(new PlusOperation(new Number(10), new Number(2)), new Number(4));
-var result = operation.Calc();
+// 1 + 3 - 2 / 5 * 7 = 1.2
+Expression exp = new();
+exp.AddTerm(new Number(1));
+exp.AddTerm(new PlusOperation());
+exp.AddTerm(new Number(3));
+exp.AddTerm(new MinusOperation());
+exp.AddTerm(new Number(2));
+exp.AddTerm(new DivideOperation());
+exp.AddTerm(new Number(5));
+exp.AddTerm(new MultiplyOperation());
+exp.AddTerm(new Number(7));
+
+var result = exp.Calc();
 Console.WriteLine($"Result: {result}");

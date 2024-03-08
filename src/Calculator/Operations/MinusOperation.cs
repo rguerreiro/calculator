@@ -2,18 +2,16 @@
 
 public class MinusOperation : Operation
 {
-    public MinusOperation(ITerm leftOperand, ITerm rightOperand)
-        : base(leftOperand, rightOperand)
+    public MinusOperation()
+        : base("-")
     {
     }
 
     public override decimal Calc()
     {
-        return LeftOperand.Calc() - RightOperand.Calc();
-    }
+        ArgumentNullException.ThrowIfNull(LeftOperand);
+        ArgumentNullException.ThrowIfNull(RightOperand);
 
-    public override string GetSymbol()
-    {
-        return "-";
+        return LeftOperand.Calc() - RightOperand.Calc();
     }
 }

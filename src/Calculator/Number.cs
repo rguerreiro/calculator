@@ -1,16 +1,11 @@
 ﻿namespace Calculator;
 
-public class Number : ITerm
+public class Number(decimal value) : Term
 {
-    protected decimal _value;
-
-    public Number(decimal value)
+    public override decimal Calc()
     {
-        _value = value;    
+        return Value;
     }
 
-    public decimal Calc()
-    {
-        return _value;
-    }
+    public decimal Value { get; private set; } = value;
 }

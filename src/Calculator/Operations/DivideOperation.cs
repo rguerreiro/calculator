@@ -2,19 +2,16 @@
 
 public class DivideOperation : Operation
 {
-    public DivideOperation(ITerm leftOperand, ITerm rightOperand)
-        : base(leftOperand, rightOperand)
+    public DivideOperation()
+        : base("/", priority: 2)
     {
-        Priority = 1;
     }
 
     public override decimal Calc()
     {
-        return LeftOperand.Calc() / RightOperand.Calc();
-    }
+        ArgumentNullException.ThrowIfNull(LeftOperand);
+        ArgumentNullException.ThrowIfNull(RightOperand);
 
-    public override string GetSymbol()
-    {
-        return "/";
+        return LeftOperand.Calc() / RightOperand.Calc();
     }
 }
