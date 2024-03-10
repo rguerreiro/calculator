@@ -40,9 +40,9 @@ var expression = new Expression();
 //    .Add(new Number(3))
 //    .Add(new CloseBracket());
 
-// 2 ^ (1 + 1) - 1 = 3
+// pi ^ (1 + 1) - 1 = 8.8696044...
 expression
-    .Add(new Number(2))
+    .Add(new Pi())
     .Add(new PowerOperation())
     .Add(new OpenBracket())
     .Add(new Number(1))
