@@ -1,4 +1,4 @@
-﻿namespace Calculator;
+﻿namespace Calculator.Numbers;
 
 public class Number(decimal value) : Term
 {

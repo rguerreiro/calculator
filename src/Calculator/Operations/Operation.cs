@@ -1,11 +1,11 @@
-﻿namespace Calculator;
+﻿namespace Calculator.Operations;
 
 public abstract class Operation(string symbol, int priority = 1) : Term(priority)
 {
     /**
      * Methods
      */
-    public virtual void Set(ITerm leftOperand, ITerm rightOperand)
+    public virtual void Prepare(ITerm? leftOperand, ITerm? rightOperand)
     {
         ArgumentNullException.ThrowIfNull(leftOperand);
         ArgumentNullException.ThrowIfNull(rightOperand);
