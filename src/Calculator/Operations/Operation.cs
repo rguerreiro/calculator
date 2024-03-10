@@ -1,30 +1,46 @@
-﻿namespace Calculator.Operations;
+﻿using Calculator.Interfaces;
+
+namespace Calculator.Operations;
 
 public abstract class Operation(string symbol, int priority = 1) : Term
 {
     /**
      * Methods
      */
-    public virtual void Prepare(ITerm? leftOperand, ITerm? rightOperand)
+    protected virtual ITerm? GetLeftOperand()
     {
+        ArgumentNullException.ThrowIfNull(ParentExpression);
+
+        var leftOperand = ParentExpression.GetLeftOperandOf(this);
+
         ArgumentNullException.ThrowIfNull(leftOperand);
-        ArgumentNullException.ThrowIfNull(rightOperand);
 
-        LeftOperand = leftOperand;
-        LeftOperand.PartOf(this);
+        leftOperand.PartOf(this);
 
-        RightOperand = rightOperand;
-        RightOperand.PartOf(this);
+        return leftOperand;
+    }
+
+    protected virtual ITerm? GetRightOperand()
+    {
+        ArgumentNullException.ThrowIfNull(ParentExpression);
+
+        var rightOperand = ParentExpression.GetRightOperandOf(this);
+
+        if(rightOperand == null) throw new InvalidOperationException();
+
+        rightOperand.PartOf(this);
+
+        return rightOperand;
+    }
+
+    public virtual void PrepareForCalculation()
+    {
     }
 
     /**
      * Properties
      */
     public string Symbol { get; private set; } = symbol;
-
-    public ITerm? LeftOperand { get; protected set; } = null;
-
-    public ITerm? RightOperand { get; protected set; } = null;
 
     public int Priority { get; private set; } = priority;
 }

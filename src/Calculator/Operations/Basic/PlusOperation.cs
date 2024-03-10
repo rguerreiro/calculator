@@ -1,9 +1,9 @@
-﻿namespace Calculator.Operations;
+﻿namespace Calculator.Operations.Basic;
 
-public class PlusOperation : Operation
+public class PlusOperation : BasicOperation
 {
     public PlusOperation()
-        :base("+")
+        : base("+")
     {
     }
 

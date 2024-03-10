@@ -1,6 +1,6 @@
-﻿namespace Calculator.Operations;
+﻿namespace Calculator.Operations.Basic;
 
-public class MultiplyOperation : Operation
+public class MultiplyOperation : BasicOperation
 {
     public MultiplyOperation()
         : base("*", priority: 2)

@@ -7,6 +7,7 @@ public interface ITerm
      */
     decimal Calculate();
     void PartOf(ITerm term);
+    void PartOf(Expression expression);
 
     /**
      * Properties
@@ -14,4 +15,5 @@ public interface ITerm
     int Id { get; set; }
     bool Captured { get; }
     ITerm? BelongsTo { get; }
+    Expression? ParentExpression { get; }
 }

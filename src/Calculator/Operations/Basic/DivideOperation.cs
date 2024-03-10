@@ -1,6 +1,6 @@
-﻿namespace Calculator.Operations;
+﻿namespace Calculator.Operations.Basic;
 
-public class DivideOperation : Operation
+public class DivideOperation : BasicOperation
 {
     public DivideOperation()
         : base("/", priority: 2)

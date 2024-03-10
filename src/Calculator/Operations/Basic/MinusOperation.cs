@@ -1,6 +1,6 @@
-﻿namespace Calculator.Operations;
+﻿namespace Calculator.Operations.Basic;
 
-public class MinusOperation : Operation
+public class MinusOperation : BasicOperation
 {
     public MinusOperation()
         : base("-")
