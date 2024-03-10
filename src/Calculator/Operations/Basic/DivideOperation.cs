@@ -12,6 +12,9 @@ public class DivideOperation : BasicOperation
         ArgumentNullException.ThrowIfNull(LeftOperand);
         ArgumentNullException.ThrowIfNull(RightOperand);
 
+        if (RightOperand.Calculate() == 0)
+            throw new ApplicationException("Cannot divide by zero");
+
         return LeftOperand.Calculate() / RightOperand.Calculate();
     }
 }
