@@ -7,7 +7,7 @@ public class MultiplyOperation : BasicOperation
     {
     }
 
-    public override decimal Calculate()
+    public override double Calculate()
     {
         ArgumentNullException.ThrowIfNull(LeftOperand);
         ArgumentNullException.ThrowIfNull(RightOperand);

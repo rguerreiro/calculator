@@ -1,8 +1,8 @@
 ﻿namespace Calculator.Numbers;
 
-public class Number(decimal value) : Term
+public class Number(double value) : Term
 {
-    public override decimal Calculate()
+    public override double Calculate()
     {
         return Value;
     }
@@ -12,5 +12,5 @@ public class Number(decimal value) : Term
         return Value.ToString();
     }
 
-    public decimal Value { get; private set; } = value;
+    public double Value { get; private set; } = value;
 }

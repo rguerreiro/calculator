@@ -47,7 +47,7 @@ public class Expression
         return this;
     }
 
-    public decimal Calculate()
+    public double Calculate()
     {
         Build();
 

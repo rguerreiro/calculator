@@ -5,11 +5,11 @@ namespace Calculator.Operations.Notation;
 public class CloseBracket : Operation, IIgnoreCalculation, ICloseExpression
 {
     public CloseBracket()
-        : base(")", 3)
+        : base(")", int.MaxValue)
     {
     }
 
-    public override decimal Calculate()
+    public override double Calculate()
     {
         throw new NotImplementedException();
     }

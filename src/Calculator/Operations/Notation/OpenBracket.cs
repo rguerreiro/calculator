@@ -5,7 +5,7 @@ namespace Calculator.Operations.Notation;
 public class OpenBracket : Operation, IHasExpression
 {
     public OpenBracket()
-        : base("(", 3)
+        : base("(", int.MaxValue)
     {
     }
 
@@ -26,7 +26,7 @@ public class OpenBracket : Operation, IHasExpression
         Expression = ParentExpression.OpenSubExpresssion(this);
     }
 
-    public override decimal Calculate()
+    public override double Calculate()
     {
         ArgumentNullException.ThrowIfNull(Expression);
 

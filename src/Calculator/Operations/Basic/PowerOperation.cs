@@ -1,9 +1,9 @@
 ﻿namespace Calculator.Operations.Basic;
 
-public class PlusOperation : BasicOperation
+public class PowerOperation : BasicOperation
 {
-    public PlusOperation()
-        : base("+")
+    public PowerOperation()
+        : base("^", priority: 3)
     {
     }
 
@@ -12,6 +12,6 @@ public class PlusOperation : BasicOperation
         ArgumentNullException.ThrowIfNull(LeftOperand);
         ArgumentNullException.ThrowIfNull(RightOperand);
 
-        return LeftOperand.Calculate() + RightOperand.Calculate();
+        return Math.Pow(LeftOperand.Calculate(), RightOperand.Calculate());
     }
 }
