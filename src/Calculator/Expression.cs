@@ -16,7 +16,9 @@ public class Expression
 
     public decimal Calculate()
     {
-        var operations = _terms.Where(x => x is Operation).OrderByDescending(x => x.Priority).Cast<Operation>().ToList();
+        var operations = _terms.Where(x => x is Operation).Cast<Operation>()
+            .OrderByDescending(x => x.Priority)
+            .ThenBy(x => x.Id).ToList();
 
         foreach (var op in operations)
         {

@@ -1,6 +1,6 @@
 ﻿namespace Calculator.Operations;
 
-public abstract class Operation(string symbol, int priority = 1) : Term(priority)
+public abstract class Operation(string symbol, int priority = 1) : Term
 {
     /**
      * Methods
@@ -25,4 +25,6 @@ public abstract class Operation(string symbol, int priority = 1) : Term(priority
     public ITerm? LeftOperand { get; protected set; } = null;
 
     public ITerm? RightOperand { get; protected set; } = null;
+
+    public int Priority { get; private set; } = priority;
 }

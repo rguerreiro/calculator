@@ -1,6 +1,6 @@
 ﻿namespace Calculator;
 
-public abstract class Term(int priority = 0) : ITerm
+public abstract class Term : ITerm
 {
     /**
      * Methods
@@ -18,7 +18,6 @@ public abstract class Term(int priority = 0) : ITerm
      * Properties
      */
     public int Id { get; set; }
-    public int Priority { get; private set; } = priority;
     public ITerm? BelongsTo { get; protected set; } = null;
     public bool Captured { get; protected set; } = false;
 }

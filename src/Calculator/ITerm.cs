@@ -12,7 +12,6 @@ public interface ITerm
      * Properties
      */
     int Id { get; set; }
-    int Priority { get; }
     bool Captured { get; }
     ITerm? BelongsTo { get; }
 }
