@@ -19,18 +19,26 @@ var expression = new Expression();
 //    .Add(new Number(7));
 
 // 1 + (3 - 2) / 5 * 7 = 2.4
+//expression
+//    .Add(new Number(1))
+//    .Add(new PlusOperation())
+//    .Add(new OpenBracket())
+//    .Add(new Number(3))
+//    .Add(new MinusOperation())
+//    .Add(new Number(2))
+//    .Add(new CloseBracket())
+//    .Add(new DivideOperation())
+//    .Add(new Number(5))
+//    .Add(new MultiplyOperation())
+//    .Add(new Number(7));
+
+// (1 + 3) = 4
 expression
+    .Add(new OpenBracket())
     .Add(new Number(1))
     .Add(new PlusOperation())
-    .Add(new OpenBracket())
     .Add(new Number(3))
-    .Add(new MinusOperation())
-    .Add(new Number(2))
-    .Add(new CloseBracket())
-    .Add(new DivideOperation())
-    .Add(new Number(5))
-    .Add(new MultiplyOperation())
-    .Add(new Number(7));
+    .Add(new CloseBracket());
 
 var result = expression.Calculate();
 

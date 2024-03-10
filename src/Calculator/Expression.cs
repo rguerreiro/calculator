@@ -118,7 +118,7 @@ public class Expression
     {
         get
         {
-            return _terms.Where(x => x is Operation).Cast<Operation>()
+            return _terms.Where(x => x is Operation && x is not IIgnoreCalculation).Cast<Operation>()
                 .OrderByDescending(x => x.Priority)
                 .ThenBy(x => x.Id)
                 .ToList();
