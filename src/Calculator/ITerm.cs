@@ -5,7 +5,7 @@ public interface ITerm
     /**
      * Methods
      */
-    decimal Calc();
+    decimal Calculate();
     void PartOf(ITerm term);
 
     /**

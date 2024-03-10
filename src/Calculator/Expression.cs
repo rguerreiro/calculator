@@ -31,7 +31,7 @@ public class Expression
             op.Prepare(left, right);
         }
 
-        return operations.Last().Calc();
+        return operations.Last().Calculate();
     }
 
     public int Count { get { return _terms.Count; } }

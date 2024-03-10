@@ -2,7 +2,7 @@
 
 public class Number(decimal value) : Term
 {
-    public override decimal Calc()
+    public override decimal Calculate()
     {
         return Value;
     }

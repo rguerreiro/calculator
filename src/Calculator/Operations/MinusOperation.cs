@@ -7,11 +7,11 @@ public class MinusOperation : Operation
     {
     }
 
-    public override decimal Calc()
+    public override decimal Calculate()
     {
         ArgumentNullException.ThrowIfNull(LeftOperand);
         ArgumentNullException.ThrowIfNull(RightOperand);
 
-        return LeftOperand.Calc() - RightOperand.Calc();
+        return LeftOperand.Calculate() - RightOperand.Calculate();
     }
 }
