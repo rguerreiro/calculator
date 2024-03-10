@@ -11,4 +11,9 @@ public abstract class BasicOperation(string symbol, int priority = 1) : Operatio
     public ITerm? LeftOperand { get; protected set; } = null;
 
     public ITerm? RightOperand { get; protected set; } = null;
+
+    public override string ToString()
+    {
+        return $"{LeftOperand} {Symbol} {RightOperand}";
+    }
 }

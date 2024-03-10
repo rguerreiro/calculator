@@ -9,6 +9,13 @@ public class OpenBracket : Operation, IHasExpression
     {
     }
 
+    public override void PrepareForCalculation()
+    {
+        ArgumentNullException.ThrowIfNull(Expression);
+
+        Expression.Build();
+    }
+
     public override void PartOf(Expression expression)
     {
         base.PartOf(expression);
@@ -16,13 +23,20 @@ public class OpenBracket : Operation, IHasExpression
         ArgumentNullException.ThrowIfNull(expression);
         ArgumentNullException.ThrowIfNull(ParentExpression);
 
-        Expression = ParentExpression.OpenSubExpresssion();
+        Expression = ParentExpression.OpenSubExpresssion(this);
     }
 
     public override decimal Calculate()
     {
+        ArgumentNullException.ThrowIfNull(Expression);
+
         return Expression.Calculate();
     }
 
-    public Expression Expression { get; protected set; }
+    public Expression? Expression { get; protected set; }
+
+    public override string ToString()
+    {
+        return $"({Expression})";
+    }
 }

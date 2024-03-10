@@ -7,5 +7,10 @@ public class Number(decimal value) : Term
         return Value;
     }
 
+    public override string ToString()
+    {
+        return Value.ToString();
+    }
+
     public decimal Value { get; private set; } = value;
 }

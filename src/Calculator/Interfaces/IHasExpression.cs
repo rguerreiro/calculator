@@ -2,5 +2,5 @@
 
 public interface IHasExpression
 {
-    Expression Expression { get; }
+    Expression? Expression { get; }
 }
