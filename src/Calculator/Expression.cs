@@ -12,7 +12,7 @@ public class Expression
 
     public Expression Add(ITerm term)
     {
-        if (term is ICloseExpression)
+        if (term is ITerminalExpression)
         {
             CloseSubExpression();
         }
@@ -72,7 +72,7 @@ public class Expression
     public virtual ITerm? GetLeftOperandOf(Operation operation)
     {
         var left = _terms
-            .Where(x => x.Id < operation.Id && x is not IIgnoreCalculation)
+            .Where(x => x.Id < operation.Id && x is not ITerminalExpression)
             .OrderByDescending(x => x.Id)
             .FirstOrDefault();
 
@@ -83,7 +83,7 @@ public class Expression
     public virtual ITerm? GetRightOperandOf(Operation operation)
     {
         var right = _terms
-            .Where(x => x.Id > operation.Id && x is not IIgnoreCalculation)
+            .Where(x => x.Id > operation.Id && x is not ITerminalExpression)
             .OrderBy(x => x.Id)
             .FirstOrDefault();
 
@@ -118,7 +118,7 @@ public class Expression
     {
         get
         {
-            return _terms.Where(x => x is Operation && x is not IIgnoreCalculation).Cast<Operation>()
+            return _terms.Where(x => x is Operation && x is not ITerminalExpression).Cast<Operation>()
                 .OrderByDescending(x => x.Priority)
                 .ThenBy(x => x.Id)
                 .ToList();

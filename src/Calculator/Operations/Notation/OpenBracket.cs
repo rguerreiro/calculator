@@ -2,7 +2,7 @@
 
 namespace Calculator.Operations.Notation;
 
-public class OpenBracket : Operation, IHasExpression
+public class OpenBracket : Operation, ISubExpression
 {
     public OpenBracket()
         : base("(", int.MaxValue)

@@ -1,16 +1,9 @@
-﻿using Calculator.Interfaces;
+﻿namespace Calculator.Numbers;
 
-namespace Calculator.Numbers;
-
-public class Pi : Number, IConstant
+public class Pi : Constant
 {
     public Pi()
-        :base(Math.PI)
+        : base("pi", Math.PI)
     {
-    }
-
-    public override string ToString()
-    {
-        return "pi";
     }
 }

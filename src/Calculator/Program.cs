@@ -4,7 +4,7 @@ using Calculator.Operations.Basic;
 using Calculator.Numbers;
 using Calculator.Operations.Notation;
 
-var expression = new Expression();
+//var expression = new Expression();
 
 // 1 + 3 - 2 / 5 * 7 = 1.2
 //expression
@@ -41,16 +41,18 @@ var expression = new Expression();
 //    .Add(new CloseBracket());
 
 // pi ^ (1 + 1) - 1 = 8.8696044...
-expression
-    .Add(new Pi())
-    .Add(new PowerOperation())
-    .Add(new OpenBracket())
-    .Add(new Number(1))
-    .Add(new PlusOperation())
-    .Add(new Number(1))
-    .Add(new CloseBracket())
-    .Add(new MinusOperation())
-    .Add(new Number(1));
+//expression
+//    .Add(new Pi())
+//    .Add(new PowerOperation())
+//    .Add(new OpenBracket())
+//    .Add(new Number(1))
+//    .Add(new PlusOperation())
+//    .Add(new Number(1))
+//    .Add(new CloseBracket())
+//    .Add(new MinusOperation())
+//    .Add(new Number(1));
+
+var expression = Interpreter.Interpret("1 + 3 - 2 / 5 * 7".ToCharArray());
 
 var result = expression.Calculate();
 

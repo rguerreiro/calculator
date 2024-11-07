@@ -2,4 +2,5 @@
 
 public interface IConstant
 {
+    string Symbol { get; }
 }

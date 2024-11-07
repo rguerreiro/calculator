@@ -2,15 +2,10 @@
 
 namespace Calculator.Operations.Notation;
 
-public class CloseBracket : Operation, IIgnoreCalculation, ICloseExpression
+public class CloseBracket : TerminalExpression
 {
     public CloseBracket()
         : base(")", int.MaxValue)
     {
-    }
-
-    public override double Calculate()
-    {
-        throw new NotImplementedException();
     }
 }

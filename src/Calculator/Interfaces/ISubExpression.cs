@@ -1,6 +1,6 @@
 ﻿namespace Calculator.Interfaces;
 
-public interface IHasExpression
+public interface ISubExpression
 {
     Expression? Expression { get; }
 }
