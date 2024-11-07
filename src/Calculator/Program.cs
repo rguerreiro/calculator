@@ -52,6 +52,7 @@ using Calculator.Operations.Notation;
 //    .Add(new MinusOperation())
 //    .Add(new Number(1));
 
+// TODO: check the rounds because it's not giving the exact number
 var expression = Interpreter.Interpret("1 + 3 - 2 / 5 * 7".ToCharArray());
 
 var result = expression.Calculate();

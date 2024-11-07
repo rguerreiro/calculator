@@ -1,6 +1,5 @@
 ﻿using Calculator.Interfaces;
 using Calculator.Operations;
-using System.Text;
 
 namespace Calculator;
 
@@ -118,10 +117,9 @@ public class Expression
     {
         get
         {
-            return _terms.Where(x => x is Operation && x is not ITerminalExpression).Cast<Operation>()
+            return [.. _terms.Where(x => x is Operation && x is not ITerminalExpression).Cast<Operation>()
                 .OrderByDescending(x => x.Priority)
-                .ThenBy(x => x.Id)
-                .ToList();
+                .ThenBy(x => x.Id)];
         }
     }
 }

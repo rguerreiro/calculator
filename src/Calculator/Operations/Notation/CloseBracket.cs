@@ -1,6 +1,4 @@
-﻿using Calculator.Interfaces;
-
-namespace Calculator.Operations.Notation;
+﻿namespace Calculator.Operations.Notation;
 
 public class CloseBracket : TerminalExpression
 {

@@ -1,6 +1,4 @@
-﻿using Calculator.Interfaces;
-
-namespace Calculator.Operations;
+﻿namespace Calculator.Operations;
 
 public abstract class Operation(string symbol, int priority = 1) : Term
 {
@@ -11,10 +9,7 @@ public abstract class Operation(string symbol, int priority = 1) : Term
     {
         ArgumentNullException.ThrowIfNull(ParentExpression);
 
-        var leftOperand = ParentExpression.GetLeftOperandOf(this);
-
-        ArgumentNullException.ThrowIfNull(leftOperand);
-
+        var leftOperand = ParentExpression.GetRightOperandOf(this) ?? throw new InvalidOperationException();
         leftOperand.PartOf(this);
 
         return leftOperand;
@@ -24,10 +19,7 @@ public abstract class Operation(string symbol, int priority = 1) : Term
     {
         ArgumentNullException.ThrowIfNull(ParentExpression);
 
-        var rightOperand = ParentExpression.GetRightOperandOf(this);
-
-        if(rightOperand == null) throw new InvalidOperationException();
-
+        var rightOperand = ParentExpression.GetRightOperandOf(this) ?? throw new InvalidOperationException();
         rightOperand.PartOf(this);
 
         return rightOperand;
