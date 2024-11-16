@@ -1,5 +1,6 @@
 ﻿using Calculator.Interfaces;
 using Calculator.Operations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Calculator;
 
@@ -50,6 +51,15 @@ public class Expression
     {
         Build();
 
+        if (_terms.Count == 0)
+            throw new InvalidOperationException("Unable to calculate an empty expression");
+
+        if (Operations.Count == 0)
+        {
+            // No operations in expression. Example: "5"
+            return _terms.First().Calculate();
+        }
+
         // Go to the operation with the least priority to start the calculation,
         // which is the one that all depends and it depends on no one
         // and go back from there
@@ -92,7 +102,12 @@ public class Expression
 
     public override string? ToString()
     {
-        if (OperationsByPriority != null && OperationsByPriority.Count > 0)
+        if (Operations.Count == 0 && _terms.Count > 0)
+        {
+            // No operations in expression. Example: "5"
+            return _terms.First().ToString();
+        }
+        else if (OperationsByPriority != null && OperationsByPriority.Count > 0)
         {
             var lastOp = OperationsByPriority.Last();
             return lastOp == null ? String.Empty : lastOp.ToString();
