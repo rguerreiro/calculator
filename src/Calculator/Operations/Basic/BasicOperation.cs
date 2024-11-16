@@ -1,6 +1,6 @@
 ﻿namespace Calculator.Operations.Basic;
 
-public abstract class BasicOperation(string symbol, int priority = 1) : Operation(symbol, priority)
+public abstract class BasicOperation(char symbol, int priority = 1) : Operation(symbol, priority)
 {
     public override void PrepareForCalculation()
     {

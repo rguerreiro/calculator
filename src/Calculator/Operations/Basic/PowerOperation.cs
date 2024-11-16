@@ -3,7 +3,7 @@
 public class PowerOperation : BasicOperation
 {
     public PowerOperation()
-        : base("^", priority: 3)
+        : base('^', priority: 3)
     {
     }
 

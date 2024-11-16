@@ -3,7 +3,7 @@
 public class MinusOperation : BasicOperation
 {
     public MinusOperation()
-        : base("-")
+        : base('-')
     {
     }
 

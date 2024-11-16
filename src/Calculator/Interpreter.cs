@@ -15,7 +15,7 @@ public class Interpreter
         public int CurrIndex { get; set; } = 0;
     }
 
-    private static readonly Dictionary<string, Type> _supportedOperations = [];
+    private static readonly Dictionary<char, Type> _supportedOperations = [];
     private static readonly Dictionary<string, Type> _supportedConstants = [];
 
     static Interpreter()
@@ -34,13 +34,13 @@ public class Interpreter
             if (curr == ' ')
             {
                 ctx.CurrIndex += 1;
-                continue; // skip if is a space
+                continue; // skip if it's a space
             }
 
             // STEPS
-            //  1. Check if is number
-            //  2. Check if is operation
-            //  3. Check if is constant
+            //  1. Check if it's a number
+            //  2. Check if it's an operation
+            //  3. Check if it's a constant
             //  4. throw parsing error
 
             if (Char.IsNumber(curr))
@@ -49,21 +49,17 @@ public class Interpreter
             }
             else // not a number
             {
-                if(_supportedOperations.ContainsKey(curr.ToString()))
+                if(_supportedOperations.TryGetValue(curr, out Type? value))
                 {
-                    var op = (Operation?)Activator.CreateInstance(_supportedOperations[curr.ToString()]);
-                    if (op == null) throw new ApplicationException($"Something wrong with operation '{curr}' at character {ctx.CurrIndex + 1}");
-
+                    var op = (Operation?)Activator.CreateInstance(value) ?? throw new ApplicationException($"Something wrong with operation '{curr}' at character {ctx.CurrIndex + 1}");
                     interpreted.Add(op);
                 }
                 else
                 {
                     var text = GetText(ctx);
-                    if (_supportedConstants.TryGetValue(text, out Type? value))
+                    if (_supportedConstants.TryGetValue(text, out value))
                     {
-                        var number = (Number?)Activator.CreateInstance(value);
-                        if (number == null) throw new ApplicationException($"Something wrong with constant '{text}' at character {ctx.CurrIndex - text.Length + 2}");
-
+                        var number = (Number?)Activator.CreateInstance(value) ?? throw new ApplicationException($"Something wrong with constant '{text}' at character {ctx.CurrIndex - text.Length + 2}");
                         interpreted.Add(number);
                     }
                     else
@@ -140,7 +136,6 @@ public class Interpreter
         BuildOperations();
         BuildConstants();
     }
-
     private static void BuildConstants()
     {
         foreach (var type in GetAllTypesThatImplement<IConstant>())
@@ -149,7 +144,6 @@ public class Interpreter
             _ = _supportedConstants.TryAdd(constant.Symbol, type);
         }
     }
-
     private static void BuildOperations()
     {
         foreach (var type in GetAllTypesThatImplement<Operation>())

@@ -2,7 +2,7 @@
 
 namespace Calculator.Operations;
 
-public abstract class TerminalExpression(string symbol, int priority) : Operation(symbol, priority), ITerminalExpression
+public abstract class TerminalExpression(char symbol, int priority) : Operation(symbol, priority), ITerminalExpression
 {
     public override decimal Calculate()
     {

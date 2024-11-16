@@ -53,7 +53,8 @@ using Calculator.Operations.Notation;
 //    .Add(new Number(1));
 
 //var expression = Interpreter.Interpret("1 + 3 - 2 / 5 * 7".ToCharArray());
-var expression = Interpreter.Interpret("pi ^ (1 + 1) - 1".ToCharArray());
+//var expression = Interpreter.Interpret("pi ^ (1 + 1) - 1".ToCharArray());
+var expression = Interpreter.Interpret("e ^ (1 / pi)".ToCharArray());
 
 var result = expression.Calculate();
 

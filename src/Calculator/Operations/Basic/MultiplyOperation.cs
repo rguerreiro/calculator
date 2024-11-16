@@ -3,7 +3,7 @@
 public class MultiplyOperation : BasicOperation
 {
     public MultiplyOperation()
-        : base("*", priority: 2)
+        : base('*', priority: 2)
     {
     }
 

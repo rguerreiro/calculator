@@ -5,7 +5,7 @@ namespace Calculator.Operations.Notation;
 public class OpenBracket : Operation, ISubExpression
 {
     public OpenBracket()
-        : base("(", int.MaxValue)
+        : base('(', int.MaxValue)
     {
     }
 

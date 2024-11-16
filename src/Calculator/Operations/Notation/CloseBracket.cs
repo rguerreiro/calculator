@@ -3,7 +3,7 @@
 public class CloseBracket : TerminalExpression
 {
     public CloseBracket()
-        : base(")", int.MaxValue)
+        : base(')', int.MaxValue)
     {
     }
 }
