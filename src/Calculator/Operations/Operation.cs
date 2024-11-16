@@ -9,7 +9,7 @@ public abstract class Operation(string symbol, int priority = 1) : Term
     {
         ArgumentNullException.ThrowIfNull(ParentExpression);
 
-        var leftOperand = ParentExpression.GetRightOperandOf(this) ?? throw new InvalidOperationException();
+        var leftOperand = ParentExpression.GetLeftOperandOf(this) ?? throw new InvalidOperationException();
         leftOperand.PartOf(this);
 
         return leftOperand;

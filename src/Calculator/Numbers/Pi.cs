@@ -3,7 +3,7 @@
 public class Pi : Constant
 {
     public Pi()
-        : base("pi", Math.PI)
+        : base("pi", (decimal)Math.PI)
     {
     }
 }

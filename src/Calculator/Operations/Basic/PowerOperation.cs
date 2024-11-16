@@ -7,11 +7,11 @@ public class PowerOperation : BasicOperation
     {
     }
 
-    public override double Calculate()
+    public override decimal Calculate()
     {
         ArgumentNullException.ThrowIfNull(LeftOperand);
         ArgumentNullException.ThrowIfNull(RightOperand);
 
-        return Math.Pow(LeftOperand.Calculate(), RightOperand.Calculate());
+        return (decimal)Math.Pow(Decimal.ToDouble(LeftOperand.Calculate()), Decimal.ToDouble(RightOperand.Calculate()));
     }
 }

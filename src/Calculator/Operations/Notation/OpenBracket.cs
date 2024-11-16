@@ -26,7 +26,7 @@ public class OpenBracket : Operation, ISubExpression
         Expression = ParentExpression.OpenSubExpresssion(this);
     }
 
-    public override double Calculate()
+    public override decimal Calculate()
     {
         ArgumentNullException.ThrowIfNull(Expression);
 

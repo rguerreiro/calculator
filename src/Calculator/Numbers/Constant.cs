@@ -2,7 +2,7 @@
 
 namespace Calculator.Numbers;
 
-public abstract class Constant(string symbol, double value) : Number(value), IConstant
+public abstract class Constant(string symbol, decimal value) : Number(value), IConstant
 {
     public override string ToString()
     {

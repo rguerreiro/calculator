@@ -5,7 +5,7 @@ public abstract class Term : ITerm
     /**
      * Methods
      */
-    public abstract double Calculate();
+    public abstract decimal Calculate();
     public virtual void PartOf(Expression expression)
     {
         ArgumentNullException.ThrowIfNull(expression);

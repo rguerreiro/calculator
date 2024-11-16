@@ -1,6 +1,7 @@
 ﻿using Calculator.Interfaces;
 using Calculator.Numbers;
 using Calculator.Operations;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 
@@ -77,7 +78,7 @@ public class Interpreter
         return interpreted;
     }
 
-    private static double GetNumber(InterpreterContext ctx)
+    private static decimal GetNumber(InterpreterContext ctx)
     {
         StringBuilder sb = new();
         var stillNumber = true;
@@ -99,8 +100,10 @@ public class Interpreter
             }
         }
 
-        // TODO: how to handle '.' and ',' with locales
-        if (!Double.TryParse(sb.ToString(), out double result))
+        // parsing according to the current locale
+        // https://learn.microsoft.com/en-us/dotnet/api/system.decimal.tryparse?view=net-9.0
+        // https://learn.microsoft.com/en-us/dotnet/fundamentals/runtime-libraries/system-globalization-cultureinfo-currentculture
+        if (!Decimal.TryParse(sb.ToString(), CultureInfo.CurrentCulture, out decimal result))
         {
             throw new ApplicationException($"Something wrong with number '{sb}' at character {ctx.CurrIndex - sb.Length + 2}");
         }
