@@ -6,4 +6,10 @@ public class CloseBracket : TerminalExpression
         : base(')', int.MaxValue)
     {
     }
+
+    public override string ToString()
+    {
+        // The open bracket "(" returns the complete string
+        return ")";
+    }
 }

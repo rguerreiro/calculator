@@ -8,6 +8,7 @@ public interface ITerm
     decimal Calculate();
     void PartOf(ITerm term);
     void PartOf(Expression expression);
+    string? ToString();
 
     /**
      * Properties

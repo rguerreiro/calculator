@@ -19,6 +19,7 @@ public abstract class Term : ITerm
         Captured = true;
         BelongsTo = term;
     }
+    public abstract override string? ToString();
 
     /**
      * Properties
