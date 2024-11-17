@@ -1,6 +1,7 @@
 ﻿using Calculator.Interfaces;
 using Calculator.Operations;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Calculator;
 
@@ -10,22 +11,32 @@ public class Expression
     private readonly Stack<Expression> _openedExpressions = [];
     private bool _built = false;
 
-    public Expression Add(ITerm term)
+    public Expression Add(ITerm term, Expression? parent = null)
     {
-        if (term is ITerminalExpression)
-        {
-            CloseSubExpression();
-        }
-
         if (_openedExpressions.Count > 0)
         {
-            _openedExpressions.Peek().Add(term);
+            _openedExpressions.Peek().Add(term, this);
         }
         else
         {
-            _terms.Add(term);
-            term.Id = Count;
-            term.PartOf(this);
+            if (term is ITerminalExpression)
+            {
+                if (parent != null)
+                {
+                    parent.CloseSubExpression();
+                    return parent.Add(term);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Unable to close expression: {term}");
+                }
+            }
+            else
+            {
+                _terms.Add(term);
+                term.Id = Count;
+                term.PartOf(this);
+            }
         }
 
         return this;
@@ -76,6 +87,11 @@ public class Expression
     public virtual Expression CloseSubExpression()
     {
         return _openedExpressions.Pop();
+    }
+
+    public virtual bool CanCloseSubExpression()
+    {
+        return _openedExpressions.Count > 0 && _openedExpressions.Peek()._openedExpressions.Count == 0;
     }
 
     public virtual ITerm? GetLeftOperandOf(Operation operation)
